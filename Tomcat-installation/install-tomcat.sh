@@ -31,20 +31,30 @@ echo "end on tomcat installation"
 
 #Tomcat server configuration:
 find / -name server.xml context.xml
-vim /opt/tomcat9/conf/server.xml
+vi /opt/tomcat9/conf/server.xml
+vi /opt/tomcat9/conf/context.xml
 vi /opt/tomcat9/webapps/manager/META-INF/context.xml
-vi /opt/tomcat9/conf/tomcat-user.xml  # to add user
 
-	<user username="landmark" password="admin" roles="manager-gui,admin-gui"/>
-	
 
-/opt/tomcat9/conf/context.xml
+#Important configuration details:
+vi /opt/tomcat9/conf/tomcat-user.xml  # to add user find the 5 lines (2 roles & 3 user lines) below then copy and paste the last 3 lines below:
 
- vi /opt/tomcat9/webapps/manager/META-INF/context.xml
+<!--
+  <role rolename="tomcat"/>
+  <role rolename="role1"/>
+  <user username="tomcat" password="<must-be-changed>" roles="tomcat"/>
+  <user username="both" password="<must-be-changed>" roles="tomcat,role1"/>
+  <user username="role1" password="<must-be-changed>" roles="role1"/>
+-->
+  <role rolename="manager-gui"/>
+  <role rolename="manager-scripts"/>
+  <user username="landmark" password="admin123" roles="manager-gui,manager-scripts"/>
+
+
+ vi /opt/tomcat9/webapps/manager/META-INF/context.xml  # Make sure Value className is commented out with <!-- & --> and looks like below:
+ 
+ <!--  <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+         allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" /> -->
   
-  vi /opt/tomcat9/conf/tomcat-user.xml  # to add user
-  
-	
-	username YourName password=PassWord   roles=manager-gui
 	
 	
