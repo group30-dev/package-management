@@ -26,18 +26,14 @@ starttomcat
 echo "end on tomcat installation"
 #========
 
+
 #2. Start of tomcat configuration 
+#Access tomcat on the browser with PublicIP:8080. Click on buttons and will lead to a 403 error page.
 
+#Important configuration details as follows:
+run sh shutdown.sh 			#To shutdown Tomcat. This step may not be necessary.
 
-#Tomcat server configuration:
-find / -name server.xml context.xml
-vi /opt/tomcat9/conf/server.xml
-vi /opt/tomcat9/conf/context.xml
-vi /opt/tomcat9/webapps/manager/META-INF/context.xml
-
-
-#Important configuration details:
-vi /opt/tomcat9/conf/tomcat-user.xml  # to add user find the 5 lines (2 roles & 3 user lines) below then copy and paste the last 3 lines below:
+vi /opt/tomcat9/conf/tomcat-user.xml  	# to add user find the 5 lines (2 roles & 3 user lines) below then copy and paste the last 3 lines below:
 
 <!--
   <role rolename="tomcat"/>
