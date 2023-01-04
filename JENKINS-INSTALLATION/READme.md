@@ -24,9 +24,8 @@ sudo yum install jdk-8u131-linux-x64.rpm -y
 ```
 ###  Add Jenkins Repository and key
 ```sh
+sudo wget -O /etc/yum.repos.d/jenkins.repo \https://pkg.jenkins.io/redhat-stable/jenkins.repo
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
-cd /etc/yum.repos.d/
-sudo curl -O https://pkg.jenkins.io/redhat-stable/jenkins.repo
 ```
 
 ## Install Jenkins
