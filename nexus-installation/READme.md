@@ -19,7 +19,7 @@
 # so create a new user called nexus and grant sudo access to manage nexus services as follows. 
 sudo hostname nexus
 sudo useradd nexus
-# Grand sudo access to nexus user
+# Grant sudo access to nexus user
 sudo echo "nexus ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/nexus
 sudo su - nexus
 ```
@@ -48,6 +48,8 @@ sudo chmod -R 775 /opt/sonatype-work
 ```
 ##  Open /opt/nexus/bin/nexus.rc file and  uncomment run_as_user parameter and set as nexus user.
 ## # change from #run_as_user="" to [ run_as_user="nexus" ]
+
+OR
 
 ```sh
 echo  'run_as_user="nexus" ' > /opt/nexus/bin/nexus.rc
